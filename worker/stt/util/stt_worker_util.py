@@ -100,4 +100,4 @@ class VoiceActivityDetector:
                     # 버퍼 초기화
                     self.ring_buffer.clear()
 
-        return None # 녹음 종료 조건을 아직 충족하지 않으면 None 반환
+        return None # 녹음 종료 조건을 아직 충족하지 않으면 None 반환!
