@@ -1,6 +1,7 @@
 import asyncio
 import websockets
 import numpy as np
+import json
 from concurrent.futures import ThreadPoolExecutor
 from worker.stt.util.stt_worker_util import VoiceActivityDetector
 from worker.stt.stt_worker_process import whisper_pipeline
@@ -12,10 +13,24 @@ executor = ThreadPoolExecutor(max_workers=11)
 async def handle_connection(websocket):
     print("🎧 클라이언트 연결됨")
 
+    # 소환사의 summoner_id 값을 가져오는 코드
+    while True:
+        init_message = await websocket.recv()
+        if isinstance(init_message, str):
+            try:
+                data = json.loads(init_message)
+                if data.get("type") == "init":
+                    summoner_id = data.get("summonerId", "unknown")
+                    print(f"🎮 Summoner ID: {data.get('summonerId', 'unknown')}")
+                    break
+            except json.JSONDecodeError:
+                print("❌ 초기화 메시지 파싱 오류")
+        else:
+            print("❌ 초기화 메시지가 JSON 형식이 아님")
+
     # stt_worker_util.py 에서 음성 활동 감지 및 녹음 처리를 위한 VoiceActivityDetector 객체 생성
     vad = VoiceActivityDetector()
     # Summoner ID와 오디오 큐 초기화
-    summoner_id = "4545"
     audio_queue = asyncio.Queue()
     # 비동기 이벤트 루프 가져오기
     loop = asyncio.get_event_loop()
