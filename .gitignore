@@ -18,7 +18,3 @@ __pycache__/
 .DS_Store
 
 build
-
-ex.py
-
-dist

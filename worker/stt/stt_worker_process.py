@@ -62,7 +62,7 @@ def whisper_pipeline(summoner_id, region, audio_data, audio_queue, loop):
     print(f"[🎯 결과] {summoner_id}: {final_text}")
 
     # Spring 서버로 결과 전송 ([챔피언 이름] [스펠 이름])
-    response = requests.post("https://lolpago.com/spell", json={
+    response = requests.post("https://lolpago.com/api/spell", json={
         "summonerId": summoner_id,
         "finalText": final_text,
         "region": region
@@ -91,7 +91,7 @@ def whisper_pipeline(summoner_id, region, audio_data, audio_queue, loop):
 
     # 스펠 쿨다운이 끝났을 때 알람 메세지 요청
     try:
-        cooldown_response = requests.get("https://lolpago/spell/await",
+        cooldown_response = requests.get("https://lolpago.com/api/spell/await",
                                          params=spell_cool_down_params,
                                          timeout=360)
 
