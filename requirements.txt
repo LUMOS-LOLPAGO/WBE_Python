@@ -1,4 +1,4 @@
-# 기본 API/서버/인프라 관련 (2025-07 기준 최신 안정 버전)
+# 기본 API/서버/인프라 관련
 openai>=1.14.3
 fastapi>=0.111.0
 uvicorn[standard]>=0.29.0
@@ -8,14 +8,19 @@ requests>=2.32.4
 websockets>=12.0
 aiofiles>=23.2.1
 
-# 수학/과학 연산 라이브러리
+# 수학/과학 연산
 numpy>=1.26.4
 scipy>=1.13.0
+scikit-learn>=1.5.0
 
 # 오디오 처리
 sounddevice>=0.4.7
 soundfile>=0.12.1
 webrtcvad @ git+https://github.com/wiseman/py-webrtcvad.git
+ffmpeg-python>=0.2.0
+
+# PyTorch (Whisper 종속성)
+torch>=2.3.0
 
 # Whisper (OpenAI GitHub 최신 버전)
 openai-whisper @ git+https://github.com/openai/whisper.git

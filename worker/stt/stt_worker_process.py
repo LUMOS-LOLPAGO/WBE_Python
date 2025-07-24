@@ -24,7 +24,7 @@ def load_prompt_template(file_path: str) -> str:
 
 
 # 음성 -> 텍스트 -> GPT 분석 -> TTS 응답 -> WebSocket 전송까지 담당하는 파이프라인
-def whisper_pipeline(summoner_id, audio_data, audio_queue, loop):
+def whisper_pipeline(summoner_id, region, audio_data, audio_queue, loop):
     print(f"[🔊 Whisper] {summoner_id} 음성 분석 시작")
 
     # 입력된 float32 PCM 오디오 데이터를 임시 wav 파일로 저장
@@ -65,7 +65,7 @@ def whisper_pipeline(summoner_id, audio_data, audio_queue, loop):
     response = requests.post("http://localhost:8080/spell", json={
         "summonerId": summoner_id,
         "finalText": final_text,
-        "region": "KR"
+        "region": region
     })
 
     # Spring 서버 응답 CREATED 아니면 에러 처리

@@ -21,7 +21,9 @@ async def handle_connection(websocket):
                 data = json.loads(init_message)
                 if data.get("type") == "init":
                     summoner_id = data.get("summonerId", "unknown")
+                    region = data.get("region", "KR")
                     print(f"🎮 Summoner ID: {data.get('summonerId', 'unknown')}")
+                    print(f"🌍 Region: {data.get('region', 'KR')}")
                     break
             except json.JSONDecodeError:
                 print("❌ 초기화 메시지 파싱 오류")
@@ -70,7 +72,7 @@ async def handle_connection(websocket):
             # 음성 활동이 감지되면 녹음된 오디오 데이터를 Whisper 파이프라인으로 전달
             if result is not None:
                 print("🛑 음성 녹음 종료 → Whisper 분석 시작")
-                loop.run_in_executor(executor, whisper_pipeline, summoner_id, result, audio_queue, loop)
+                loop.run_in_executor(executor, whisper_pipeline, summoner_id, region, result, audio_queue, loop)
 
     # WebSocket 연결이 종료되거나 예외가 발생
     except websockets.exceptions.ConnectionClosed as e:
