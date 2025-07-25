@@ -1,5 +1,8 @@
 # WBE-python
 
+# 구조도
+<img width="691" height="561" alt="LOLPAGO STT 스트리밍 drawio" src="https://github.com/user-attachments/assets/4a56a061-1741-4484-b5a5-767ce03e1c15" />
+
 # 🎧 Voice WebSocket Server (STT + TTS)
 
 실시간 음성을 받아 STT(음성 인식)로 텍스트로 변환하고, 분석 후 TTS(음성 합성) 응답을 반환하는 WebSocket 기반 Python 서버입니다.
