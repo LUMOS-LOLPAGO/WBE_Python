@@ -1,7 +1,7 @@
 # WBE-python
 
 # 구조도
-<img width="691" height="561" alt="LOLPAGO STT 스트리밍 drawio" src="https://github.com/user-attachments/assets/4a56a061-1741-4484-b5a5-767ce03e1c15" />
+<img width="691" height="561" alt="LOLPAGO STT + TTS 스트리밍 drawio" src="https://github.com/user-attachments/assets/03802ab3-c6ee-4490-b62b-988bd0ced53e" />
 
 # 🎧 Voice WebSocket Server (STT + TTS)
 
